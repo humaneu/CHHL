@@ -1,0 +1,29 @@
+extends layout
+block content
+	#login-container
+		form( action="/signup",method="post")#login-form.well.span4
+			h1 Hi there! Welcome! 
+			p.subheading Please enter the info below:
+			label Name
+			br
+			input(type="text", name="username", id='username-tf' ,required='' ).span4.required
+			br
+			label Emailid
+			br
+			input(type="email", name="useremail", id='useremail-tf' , required='' ).span4.required
+			br
+			label Password 
+			br
+			input(type="password", name="pass", id='pass-tf' , required=''  ,pattern='.{6,}' ,onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Must have at least 6 characters' : ''); if(this.checkValidity()) form.pass1.pattern = this.value;" ,placeholder='Password'   ).span4.required
+			br
+			label Enter password again	
+			br
+			input(type="password", name="pass1", id='pass1-tf' ,required=''  , pattern='.{6,}' , onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');", placeholder='Verify Password' ).span4.required
+			br
+			button(type="submit")#btn-login.btn.btn-primary
+				i.icon-lock.icon-white
+				| Sign up
+			
+			div.clear-fix
+			hr
+			
