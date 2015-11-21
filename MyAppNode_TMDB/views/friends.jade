@@ -1,0 +1,16 @@
+extend layout
+block content 
+  form.form-inline(action='/groups_insert', method='post')
+   p
+   |Enter the Group Name
+   input(name='name', value='')
+   - for (var inx = 0; inx < results.length; inx++)
+      label.checkbox.inline
+          br
+          input#inlineCheckbox1(type='checkbox', name='checks[]', value=results[inx].USER_ID, checked=false)
+          tr
+            td=results[inx].USERNAME+"   "
+            td &nbsp; &nbsp; &nbsp;
+            td=results[inx].EMAIL_ID
+     p
+          button.btn(type='submit') Create
