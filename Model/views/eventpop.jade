@@ -1,0 +1,27 @@
+extend test
+block content
+  p
+
+  - for (var inx = 0; inx < results.length; inx++)
+       b Event:
+       p= "---"+results[inx].EVENT_NAME
+       
+       b Date & Time:
+       p= "---"+results[inx].TIME.toString().substring(0,21)
+       
+       b Type
+       p= "---"+results[inx].TYPE
+       
+       b Group Name:
+       p= "---"+results[inx].GROUP_NAME
+       
+       b Place Visiting:
+       p
+         | ---
+         a(href= results[inx].URL)= results[inx].PLACE+" "
+       
+       b Address:
+       a(href='/maps?latitude='+results[inx].LATITUDE+'&longitude='+results[inx].LONGITUDE)= results[inx].ADDRESS+" "
+       
+  form(method='get', action='/events')
+      input(type='submit', value='Return')

@@ -1,0 +1,38 @@
+extends test
+block content
+    form.form-inline(action='/get_places', method='post')
+      |Pick a type of Food
+      br
+      input#inlineCheckbox1(type="checkbox", name="checks[]", value='Mexican', checked=false)
+      |Mexican
+      &nbsp &nbsp &nbsp
+      input#inlineCheckbox1(type="checkbox",  name="checks[]", value="Lebanese", checked=false)
+      |Lebanese
+      br
+      input#inlineCheckbox1(type="checkbox",  name="checks[]", value="Chinese", checked=false)
+      |Chinese
+      &nbsp &nbsp &nbsp
+      input#inlineCheckbox1(type="checkbox",  name="checks[]", value="Indian", checked=false)
+      |Indian
+      br
+      input#inlineCheckbox1(type="checkbox",  name="checks[]", value="German", checked=false)
+      |German
+      &nbsp &nbsp &nbsp
+      input#inlineCheckbox1(type="checkbox",  name="checks[]", value="Italian", checked=false)
+      |Italian
+      br
+      input#inlineCheckbox1(type="checkbox",  name="checks[]", value="French", checked=false)
+      |French
+      &nbsp &nbsp &nbsp
+      input#inlineCheckbox1(type="checkbox", name="checks[]",  value="American",checked=false)
+      |American
+      br
+      p
+       | Where do you want to go? 
+       input(type='text', name='loc' , required='')
+       br
+       Enter State ( Abbreviation )
+       br
+       input(type='text', name='state' , required='')
+       br
+       button.btn(type='submit') Pick Outing type

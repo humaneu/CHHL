@@ -1,0 +1,16 @@
+!!!5
+html
+  head
+    title #{title} 
+    link(rel='stylesheet', href='/stylesheets/test.css')
+  body
+    header
+      h1 #{title} 
+    .container
+      .main-content
+        block content
+      .sidebar
+        block sidebar
+    footer
+      p
+        a(class='GET' href='/logout?')= "Logout"
