@@ -1,0 +1,14 @@
+extend layout
+block content
+  p
+    | #{title}:
+  
+  table
+    - for (var inx = 0; inx < results.length; inx++)
+       tr
+          td=results[inx].USERNAME+" "
+          td &nbsp; &nbsp; &nbsp;
+          td=results[inx].EMAIL_ID
+    
+  form(method='post', action='/event_history?group_id='+results[0].GROUP_ID)
+      input(type='submit', value='Past History')

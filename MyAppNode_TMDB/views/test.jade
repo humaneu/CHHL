@@ -1,0 +1,15 @@
+!!!5
+html
+  head
+    link(rel='stylesheet', href='/stylesheets/test2.css')
+  body
+    header
+      h1 #{title} 
+    .container
+      .main-content
+        block content
+    footer
+      p
+        a(class='GET' href='/logout?')= "Logout"
+      p  
+        Yelpus 
