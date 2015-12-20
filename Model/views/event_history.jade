@@ -1,9 +1,0 @@
-extend test
-block content
-  p
-    | PAST EVENTS
-  table
-    - for (var inx = 0; inx < results.length; inx++)
-       br
-       tr
-        a(href='/eventpop?eventid=' + results[inx].EVENT_ID)= results[inx].NAME
