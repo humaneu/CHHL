@@ -11,8 +11,8 @@ The project consists of online databases and website. The databases store data o
 
 TECHNICAL SPECIFICATION
 
-  Database : mySQL and MongoDB
-  Web development : Node.js + Jade engine + CSS
+  Database : mySQL and MongoDB;
+  Web development : Node.js + Jade engine + CSS;
   API : Bing Search API + Twitter API
 
 Instructions to run:
