@@ -1,0 +1,147 @@
+extends _bootstrap
+append styles
+
+
+block body			
+	nav.navbar.navbar-inverse.navbar-fixed-top
+		.container
+			.navbar-header
+				button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+					span.sr-only Toggle navigation
+					span.icon-bar
+					span.icon-bar
+					span.icon-bar
+				a.navbar-brand(href='#') CHHL	
+			#navbar.navbar-collapse.collapse
+				ul.nav.navbar-nav
+					li.active
+						a(href='/') Home
+					li
+						a(href='/movie_page') Movie
+					li
+						a(href='/cast_page') Cast
+					li
+						a(href='/crew_page') Crew
+
+				if (state)
+					if (state.userid)
+						form.navbar-form.navbar-right
+							li.dropdown
+								a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
+									span.caret
+									| Welcome! 
+									a=state.username
+								ul.dropdown-menu(role='menu')
+									li
+										a(href='/quiz_info') Play game
+									li.divider
+									li
+										a(href='/logout') Log out
+						form.navbar-form.navbar-right(action='/bing',method="post")
+							.form-group
+								label(for="query")
+								input.form-control(type='text', name='query', size="60", maxlength="60", value="")
+								input.form-control(name="bt_search", type="submit", value="Bing")
+					else
+						form.navbar-form.navbar-right(action="/signin",method="get")
+							.form-group
+								button.btn.btn-success(href='/signin') Sign in
+						form.navbar-form.navbar-right(action="/signup",method="get")
+							.form-group
+								button.btn.btn-success(href='/signup') Sign up
+						form.navbar-form.navbar-right(action='/bing',method="post")
+							.form-group
+								label(for="query")
+								input.form-control(type='text', name='query', size="60", maxlength="60", value="")
+								input.form-control(name="bt_search", type="submit", value="Bing")
+				else
+					form.navbar-form.navbar-right(action="/signin",method="get")
+							.form-group
+								button.btn.btn-success(href='/signin') Sign in
+					form.navbar-form.navbar-right(action="/signup",method="get")
+							.form-group
+								button.btn.btn-success(href='/signup') Sign up
+					form.navbar-form.navbar-right(action='/bing',method="post")
+						.form-group
+							label(for="query")
+							input.form-control(type='text', name='query', size="60", maxlength="60", value="")
+							input.form-control(name="bt_search", type="submit", value="Bing")
+
+	.jumbotron
+		.container
+			.row
+				.col-md-6
+					br
+					br
+					br
+					img(src=questions[4], width='450',height='300')
+
+				.col-md-4
+					br
+					br
+					form(method='get', action='/quiz_getAnswer')
+						label.checkbox-inline
+						p
+							input(type="radio", name='title', value = questions[0])
+							| &nbsp;#{questions[0]}
+							br
+							br
+							input(type="radio", name='title', value = questions[1])
+							| &nbsp;#{questions[1]}
+							br
+							br
+							input(type="radio", name='title', value = questions[2])
+							| &nbsp;#{questions[2]}
+							br
+							br
+							input(type="radio", name='title', value = questions[3])
+							| &nbsp;#{questions[3]}
+
+							input(type='hidden', name='remain', id = 'time', value = 'default')
+						p
+							br
+
+						//button.form-control(type="submit")|Next
+						button.btn.btn-small.btn-primary(type="submit") Next »
+
+				.col-md-2
+					br
+					br
+					include ../public/stylesheets/timer_score.css
+					.mytimer 
+						Remaining Time
+						<p id="demo"></p>
+					script.
+						var tickAudio = new Audio('https://freesound.org/data/previews/254/254316_4062622-lq.mp3');
+						var gameMusic = new Audio('http://f5361a5c08a4c03f7c6f-acbeb9602bd0a56bf9c1a6bed3d8280b.r27.cf2.rackcdn.com/math2.mp3');
+						gameMusic.volume=0.5;
+						//tickAudio.play();	
+						gameMusic.play();
+						var rTime = #{remainTime};
+						var myVar = setInterval(myTimer, 1000);
+						function myTimer() {
+							document.getElementById('time').value = rTime;
+							if (rTime == -1) {
+								alert("Time Up. Please click 'Next' to see your score");
+								clearTimeout(myVar);
+							} else {
+								document.getElementById("demo").innerHTML = rTime;
+								rTime = rTime - 1;
+								tickAudio.play();		
+							}
+						}
+					br
+					br
+					br
+					br
+					br
+					br
+					.myscore
+						Your Current Score
+						p #{score}
+							
+	include ../public/stylesheets/sticky-footer.css
+	footer.footer
+		.container
+			p © CHHL
+	block content

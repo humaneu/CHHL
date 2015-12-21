@@ -1,0 +1,121 @@
+extends _bootstrap
+append styles
+
+block body
+	nav.navbar.navbar-inverse.navbar-fixed-top
+		.container
+			.navbar-header
+				button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+					span.sr-only Toggle navigation
+					span.icon-bar
+					span.icon-bar
+					span.icon-bar
+				a.navbar-brand(href='#') CHHL	
+			#navbar.navbar-collapse.collapse
+				ul.nav.navbar-nav
+					li
+						a(href='/') Home
+					li
+						a(href='/movie_page') Movie
+					li
+						a(href='/cast_page') Cast
+					li.active
+						a(href='/crew_page') Crew
+
+				if (state)
+					if (state.userid)
+						form.navbar-form.navbar-right
+							li.dropdown
+								a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
+									span.caret
+									| Welcome! 
+									a=state.username
+								ul.dropdown-menu(role='menu')
+									li
+										a(href='/quiz_info') Play game
+									li.divider
+									li
+										a(href='/logout') Log out
+						form.navbar-form.navbar-right(action='/bing',method="post")
+							.form-group
+								label(for="query")
+								input.form-control(type='text', name='query', size="60", maxlength="60", value="")
+								input.form-control(name="bt_search", type="submit", value="Bing")
+					else
+						form.navbar-form.navbar-right(action="/signin",method="get")
+							.form-group
+								button.btn.btn-success(href='/signin') Sign in
+						form.navbar-form.navbar-right(action="/signup",method="get")
+							.form-group
+								button.btn.btn-success(href='/signup') Sign up
+						form.navbar-form.navbar-right(action='/bing',method="post")
+							.form-group
+								label(for="query")
+								input.form-control(type='text', name='query', size="60", maxlength="60", value="")
+								input.form-control(name="bt_search", type="submit", value="Bing")
+				else
+					form.navbar-form.navbar-right(action="/signin",method="get")
+						.form-group
+							button.btn.btn-success(href='/signin') Sign in
+					form.navbar-form.navbar-right(action="/signup",method="get")
+						.form-group
+							button.btn.btn-success(href='/signup') Sign up
+					form.navbar-form.navbar-right(action='/bing',method="post")
+						.form-group
+							label(for="query")
+							input.form-control(type='text', name='query', size="60", maxlength="60", value="")
+							input.form-control(name="bt_search", type="submit", value="Bing")
+
+	br
+	br
+	include ../public/stylesheets/searchbar_style.css
+	.flexsearch
+		.flexsearch--wrapper
+			form.flexsearch--form(method='get', action='/search_crew')
+				.flexsearch--input-wrapper
+					input.flexsearch--input(type="search", name="crew_name", placeholder="crew name")
+				input.flexsearch--submit(type="submit", value='➜')
+	
+	br
+	.container
+		.row
+		br
+		br
+		br
+		br
+		br
+		br
+		br
+		br
+		- for (inx = 0; inx < results.length/5; inx++) {
+			.row
+				if results[inx*5]
+					div(style="float: left;" ,width='400')
+						img(src=results[inx*5].profile, width='180', height='270', hspace='15')
+						div(style="word-wrap: break-word; width:180px;")
+							a(href='/pop_crew?id=' + results[inx*5].id)="    "+results[inx*5].name
+				if results[inx*5+1]
+					div(style="float: left;",width='400')	
+						img(src=results[inx*5+1].profile, width='180', height='270', hspace='15')
+						div(style="word-wrap: break-word; width:180px;")
+							a(href='/pop_crew?id=' + results[inx*5+1].id)="    "+results[inx*5+1].name
+				if results[inx*5+2]
+					div(style="float: left;" ,width='400')
+						img(src=results[inx*5+2].profile, width='180', height='270', hspace='15')
+						div(style="word-wrap: break-word; width:180px;")
+							a(href='/pop_crew?id=' + results[inx*5+2].id)="    "+results[inx*5+2].name
+				if results[inx*5+3]
+					div(style="float: left;",width='400')	
+						img(src=results[inx*5+3].profile, width='180', height='270', hspace='15')
+						div(style="word-wrap: break-word; width:180px;")
+							a(href='/pop_crew?id=' + results[inx*5+3].id)="    "+results[inx*5+3].name
+				if results[inx*5+4]
+					div(style="float: left;",width='400')	
+						img(src=results[inx*5+4].profile, width='180', height='270', hspace='15')
+						div(style="word-wrap: break-word; width:180px;")
+							a(href='/pop_crew?id=' + results[inx*5+4].id)="    "+results[inx*5+4].name
+				br
+				br
+				br
+		-}
+	block content

@@ -1,0 +1,66 @@
+//- bootstrap.jade
+//- bootstrap mixins
+
+
+//- Including Icon mixins
+include ../public/stylesheets/components/icons
+//- Including Alert mixins
+include ../public/stylesheets/components/alerts
+//- Including Tooltip mixins
+include ../public/stylesheets/components/tooltips
+//- Including Accordion mixins
+include ../public/stylesheets/components/accordion
+//- Including Carousel mixins
+include ../public/stylesheets/components/carousel
+//- Including Table mixins
+include ../public/stylesheets/components/tables
+//- Including Navbar mixins
+include ../public/stylesheets/components/navbar
+//- Including Toggle Button mixins
+include ../public/stylesheets/components/toggle
+//- Including Nav mixins
+include ../public/stylesheets/components/navs
+//- Including Label mixins
+include ../public/stylesheets/components/labels
+//- Including Panel mixins
+include ../public/stylesheets/components/panels
+//- Including Tab mixins
+include ../public/stylesheets/components/tabs
+//- Including Dropdown mixins
+include ../public/stylesheets/components/dropdowns
+//- Including Form control mixins
+include ../public/stylesheets/components/forms
+//- Including Modal dialog mixins
+include ../public/stylesheets/components/modal
+//- Including List group mixins
+include ../public/stylesheets/components/list-groups
+//- Including Progress bar mixins
+include ../public/stylesheets/components/progress-bars
+//- Including Button mixins
+include ../public/stylesheets/components/buttons
+//- Including Image mixins
+include ../public/stylesheets/components/images
+//- Including Bootswatch theme mixins
+include ../public/stylesheets/components/bootswatch
+
+doctype html
+html(lang="en")
+	head
+		meta(charset="UTF-8")
+		meta(http-equiv="X-UA-Compatible", content="IE=edge")
+		meta(name="viewport",content="width=device-width, initial-scale=1")
+		meta(name="description",content="")
+		meta(name="author",content="")
+		link(rel="icon",href="../../favicon.ico")
+		title= title
+		block styles
+			link(rel="stylesheet",href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css")
+			//link(rel="stylesheet",href="../public/stylesheets/bootstrap.min.css")
+	body(data-spy="scroll",data-target=".scrollspy")
+		block body
+			
+		block scripts
+			script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js")
+			script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js")
+			//script(src="js/jquery.min.js")
+			//script(src="js/bootstrap.min.js")

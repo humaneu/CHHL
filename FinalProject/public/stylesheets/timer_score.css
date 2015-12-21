@@ -1,0 +1,25 @@
+
+.mytimer {
+  width: 100%;
+  background-color: #FFA500;
+  float:middle;
+  display: block;
+  border-radius: 0.25em;
+  border-collapse: collapse;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  font-size: 26px;
+  color: #C00;
+  text-align: center;
+}
+
+.myscore {
+  width: 100%;
+  background-color: #fff;
+  float:left;
+  display: block;
+  border-radius: 0.25em;  
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  color: #ff5722;
+  font-size: 26px;
+  text-align: center;  
+}
