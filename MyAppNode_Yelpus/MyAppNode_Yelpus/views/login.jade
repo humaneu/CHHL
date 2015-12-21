@@ -1,0 +1,24 @@
+extends test
+block content
+	#login-container
+		form( action="/authenticate",method="post")#login-form.well.span4
+			h1 Hi there!
+			p.subheading Please Login To Your Account
+			label Username 
+			br
+			input(type="text", name="user", id='user-tf' ,required='' ).span4.required
+			br
+			label Password
+			br
+			input(type="password", name="pass", id='pass-tf' , required='' ).span4.required
+			br
+			br
+			button(type="submit")#btn-login.btn.btn-primary
+				i.icon-lock.icon-white
+				| Sign in
+			div.clear-fix
+			br
+			hr
+			div.btm-links
+				br
+				a(href='/signup')#create-account Create An Account

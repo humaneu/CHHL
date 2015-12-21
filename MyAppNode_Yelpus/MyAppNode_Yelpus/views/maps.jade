@@ -1,0 +1,34 @@
+extends test
+block content
+ doctype html
+ html
+  head
+    p#demo
+    p#Coordinates='Location Coordinates:'
+    p#test=latitude
+    p#test2=longitude
+    script(src='http://maps.googleapis.com/maps/api/js')
+    script.
+      var myCenter=new google.maps.LatLng(document.getElementById("test").innerHTML,document.getElementById("test2").innerHTML);
+      function initialize()
+      {
+      var mapProp = {
+      center: myCenter,
+      zoom:5,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+      var marker = new google.maps.Marker({
+      position: myCenter,
+      title:'Click to zoom'
+      });
+      marker.setMap(map);
+      // Zoom to 9 when clicking on marker
+      google.maps.event.addListener(marker,'click',function() {
+      map.setZoom(9);
+      map.setCenter(marker.getPosition());
+      });
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+  body
+    #googleMap(style='width:500px;height:380px;')

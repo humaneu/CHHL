@@ -1,0 +1,13 @@
+extends test
+block content
+  body
+    | Get place
+  
+  table
+    - for (var inx = 0; inx < results.length; inx++)
+        tr
+          td=results[inx].BUSINESS_ID+" "
+          
+  
+  form(method='get', action='/')
+      input(type='submit', value='Return')

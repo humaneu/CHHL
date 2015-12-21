@@ -1,0 +1,13 @@
+extend test
+block content
+
+  table
+    - for (var inx = 0; inx < results.length; inx++)
+        tr
+          br
+          a(href='/groups_info?id=' + results[inx].GROUP_ID)= results[inx].GROUP_NAME
+          td
+   br
+
+  form(method='get', action='/events')
+      input(type='submit', value='Return')
